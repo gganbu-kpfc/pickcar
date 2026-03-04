@@ -124,7 +124,27 @@
             </div>
         </div>
     </section>
+// 별도의 파일로 관리할 100대 차량 데이터 샘플
+const carData = [
+    { name: "그랜저 하이브리드", price: "500,000", img: "grandeur.jpg", tag: "인기" },
+    { name: "쏘렌토", price: "450,000", img: "sorento.jpg", tag: "특판" },
+    // ... 여기에 100대까지 리스트업하면 자동으로 카드가 생성됩니다.
+];
 
+function displayCars() {
+    const grid = document.getElementById('car-grid');
+    carData.forEach(car => {
+        grid.innerHTML += `
+            <div class="bg-white rounded-2xl shadow-lg p-4 border hover:border-blue-500 transition">
+                <img src="images/cars/${car.img}" class="w-full h-40 object-cover rounded-xl mb-4">
+                <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded font-bold">${car.tag}</span>
+                <h3 class="font-black text-lg mt-2">${car.name}</h3>
+                <p class="text-blue-600 font-bold">월 ${car.price}원~</p>
+                <button onclick="location.href='estimate.html'" class="w-full mt-4 py-2 bg-gray-900 text-white rounded-lg text-sm">견적확인</button>
+            </div>
+        `;
+    });
+}
     <section id="reviews" class="py-24 bg-white">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-black mb-16 text-center" data-aos="fade-up">진짜 만족하신 고객님들의 후기</h2>
@@ -195,14 +215,46 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        AOS.init({ duration: 1200, once: true });
-        var swiper = new Swiper(".mySwiper", {
-            loop: true,
-            effect: "fade",
-            autoplay: { delay: 5000 },
-            pagination: { el: ".swiper-pagination", clickable: true },
-        });
+  <script>
+    AOS.init({ duration: 1200, once: true });
+    
+    // [추가] 차량 데이터 (여기 리스트에 100개를 채우면 됩니다)
+    const carData = [
+        { name: "그랜저 하이브리드", price: "520,000", tag: "인기", img: "https://via.placeholder.com/400x250?text=Grandeur" },
+        { name: "쏘렌토", price: "480,000", tag: "특판", img: "https://via.placeholder.com/400x250?text=Sorento" },
+        { name: "G80 2.5T", price: "720,000", tag: "법인강추", img: "https://via.placeholder.com/400x250?text=G80" },
+        { name: "GV80 2.5T", price: "850,000", tag: "재고보유", img: "https://via.placeholder.com/400x250?text=GV80" },
+        // ... 계속 추가 가능
+    ];
+
+    const carGrid = document.getElementById('car-grid');
+    carData.forEach((car, index) => {
+        carGrid.innerHTML += `
+            <div class="bg-white rounded-3xl shadow-lg p-5 border border-gray-100 hover:border-blue-500 transition-all hover:shadow-2xl" data-aos="fade-up" data-aos-delay="${(index % 4) * 100}">
+                <div class="relative overflow-hidden rounded-2xl mb-4">
+                    <img src="${car.img}" alt="${car.name}" class="w-full h-auto object-cover hover:scale-105 transition duration-500">
+                    <span class="absolute top-3 left-3 bg-red-500 text-white text-xs font-black px-3 py-1 rounded-full shadow-md">${car.tag}</span>
+                </div>
+                <h3 class="text-lg font-black text-gray-800 mb-1">${car.name}</h3>
+                <p class="text-blue-600 font-black text-xl mb-4">월 ${car.price}원~</p>
+                <a href="#contact" class="block w-full py-3 bg-gray-100 text-gray-700 rounded-xl font-bold text-sm hover:bg-blue-600 hover:text-white transition">견적 확인</a>
+            </div>
+        `;
+    });
+
+    var swiper = new Swiper(".mySwiper", { ... });
+</script>
     </script>
+<div class="fixed bottom-8 right-8 z-[9999] flex flex-col gap-4">
+        <a href="https://open.kakao.com/o/..." target="_blank" class="bg-yellow-400 p-4 rounded-full shadow-2xl hover:scale-110 transition flex items-center justify-center border-2 border-white">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/KakaoTalk_logo.svg" alt="카톡" class="w-8 h-8">
+        </a>
+        <a href="#contact" class="bg-blue-600 text-white px-6 py-4 rounded-full shadow-2xl font-black flex items-center gap-2 hover:bg-blue-700 transition border-2 border-white">
+            <span class="animate-bounce text-xl">💬</span> 상담신청
+        </a>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    ... (기존 스크립트들) ...
 </body>
 </html>
