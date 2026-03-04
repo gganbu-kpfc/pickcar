@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>픽카 | 견적문의</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-900 min-h-screen flex flex-col">
+    <div class="flex-grow flex items-center justify-center py-20 px-6">
+        <div class="bg-white p-10 rounded-3xl shadow-2xl w-full max-w-lg">
+            <h2 class="text-3xl font-black mb-2 text-blue-900">무료 견적 신청</h2>
+            <p class="text-gray-500 mb-8 font-medium">24개 금융사 비교 결과, 1시간 내로 발송!</p>
+            
+            <form action="https://formspree.io/f/meelygdy" method="POST" class="space-y-4 text-black">
+                <input type="text" name="성함" required placeholder="고객 성함" class="w-full p-4 rounded-xl border border-gray-200 focus:border-blue-500 outline-none">
+                <input type="tel" name="연락처" required placeholder="연락처 (010-0000-0000)" class="w-full p-4 rounded-xl border border-gray-200 focus:border-blue-500 outline-none">
+                <input type="text" name="희망차량" required placeholder="희망 차종 (예: 쏘렌토 하이브리드)" class="w-full p-4 rounded-xl border border-gray-200 focus:border-blue-500 outline-none">
+                <select name="상품" required class="w-full p-4 rounded-xl border border-gray-200 outline-none">
+                    <option value="">상품 선택</option>
+                    <option value="장기렌트">장기렌트</option>
+                    <option value="리스">리스</option>
+                    <option value="할부">할부</option>
+                </select>
+                <button type="submit" class="w-full bg-blue-600 text-white font-black py-5 rounded-xl text-xl shadow-lg hover:bg-blue-700 transition">
+                    비교견적 신청하기
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
